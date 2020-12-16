@@ -33,8 +33,8 @@ class HolaMonolog{
     function __construct()
     {        
       $this->log = new Logger("Logger Videoclub");
-      $this->log->pushHandler(new RotatingFileHandler("logs/log.log",100,Logger::WARNING));  //Sigue cogiendo el mensaje de debug, no se muy bien qué hago aqui
-      $this->log->pushHandler(new RotatingFileHandler("logs/log.log",100,Logger::INFO));
+      $this->log->pushHandler(new RotatingFileHandler("logs/log.log",Logger::WARNING));  //Sigue cogiendo el mensaje de debug
+      $this->log->pushHandler(new RotatingFileHandler("logs/log.log",Logger::INFO));
       $this->log->debug("Debug 2.0");
       $this->hora = date("G");      //Hora de 0 a 23
 
@@ -44,6 +44,10 @@ class HolaMonolog{
 
     }
 
+    function getHora(): string {
+        return $this->hora;
+    }
+    
     /**
      * Método que nos saluda si la hora así lo determina
      * @param void
